@@ -7,6 +7,7 @@ import About from './components/About/About';
 import Contacts from './components/Contacts/Contacts';
 import Services from './components/Services/Services';
 import Categories  from './components/Categories/Categories';
+import Register from './components/Register/Register'
 function App() {
   let routing = createBrowserRouter([
     {path:'/', element: <Layout/>,
@@ -16,6 +17,8 @@ function App() {
       {path:'/Contacts', element:<Contacts/>},
       {path:'/Services', element:<Services/>},
       {path:'/Categories', element:<Categories/>},
+      {path:'/Login', element:<Login/>},
+      {path:'/Register', element:<Register/>},
     ]}
 
   ]);

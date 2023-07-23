@@ -1,10 +1,9 @@
-import { Button } from 'react-bootstrap';
+import React from 'react'
 
-function Login() {
-    return (
-        <div>
-            Login
-        </div>
-    );
+export default function Login() {
+  return (
+    <>
+    Login
+    </>
+  )
 }
-export default Login;
