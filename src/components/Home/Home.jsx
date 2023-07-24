@@ -6,11 +6,13 @@ import homeImg from './assets/Images/hero-img.png';
 import './assets/style/Home.css';
 import { Link } from 'react-router-dom';
 export default function Home() {
-  const year = new Date().getFullYear
+  const year = new Date().getFullYear()
   const [items,setItems] = useState([]);
   async function getItems(){
-    let {data} = await Axios.get(``);
-    setItems(data.results)
+    let {data} = await Axios.get(`http://localhost:9999/api/items`);
+    console.log(data)
+    setItems(data)
+
   }
   useEffect(()=>{ 
     getItems();
@@ -26,7 +28,7 @@ export default function Home() {
               <h2>Make Your Interior More Minimalistic & Modern </h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dicta,
               aliquam voluptas repellendus possimus itaque rem ipsum nulla et tempore.</p>
-              <button type="button" class="btn btn-success">SHOP NOW</button>
+              <button type="button" className="btn btn-success">SHOP NOW</button>
             </div>
           </div>
           <div className="col-md-6">
@@ -39,9 +41,9 @@ export default function Home() {
     </section>
     <div className="container p-5">
       <div className="row g-5 mb-5">
-        {items.map((item, index)=> <div key={index} className='col-md-4'>
+        {items.map((item, id)=> <div key={id} className='col-md-4'>
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={``} />
+            <Card.Img variant="top" src={'holder.js/100px180'} />
             <Card.Body>
               <Card.Title>{item.name}</Card.Title>
               <Card.Text>
