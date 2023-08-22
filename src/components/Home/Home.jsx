@@ -20,7 +20,9 @@ export default function Home() {
               <h2>Make Your Interior More Minimalistic & Modern </h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dicta,
               aliquam voluptas repellendus possimus itaque rem ipsum nulla et tempore.</p>
-              <button type="button" className="btn btn-success">SHOP NOW</button>
+              <Link className='mx-auto' to='Categories'>
+                <Button style={{margin:'10px', fontWeight:500}} variant='success'>SHOP NOW</Button>
+              </Link>
             </div>
           </div>
           <div className="col-md-6">
