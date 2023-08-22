@@ -3,16 +3,25 @@ import {Link } from 'react-router-dom'
 import React from 'react';
 import './assets/Navbar.css'
 import { Badge, Button, Dropdown, Nav } from 'react-bootstrap'
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
+// import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
 import DropdownMenu from 'react-bootstrap/esm/DropdownMenu'
 import {FaCartArrowDown} from 'react-icons/fa'
 import { CartState } from '../../Context/Context'
 import Card from 'react-bootstrap/Card';
+import Cookie from 'js-cookie';
 export default function Navbar() {
   
   const{state:{cart},
-    dispatch,items,setItems
+    dispatch,loggedIn,setLoggedIn
 } = CartState();
+
+  const RemoveCookie = (cookieName)=>{
+    Cookie.remove(cookieName)
+  };
+  const logOut = ()=>{
+    setLoggedIn(false);
+    RemoveCookie('userAuth');
+  }
 
   return (
     <>
@@ -89,10 +98,14 @@ export default function Navbar() {
       </Dropdown>
     </Nav>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav  mb-2 mx-auto mb-lg-0 ">
-        <li className="nav-item  ">
+      <ul className="navbar-nav align-items-center mb-2 mx-auto mb-lg-0 ">
+        { loggedIn ? 
+        (<li className="nav-item  ">
+          <Button className="btn" onClick={()=>logOut()}>Logout</Button>
+        </li>)
+        :(<li className="nav-item  ">
           <Link className="nav-Link text-dark active text-decoration-none mx-1" aria-current="page" to='Login'>Login</Link>
-        </li>
+        </li>)}
         <li className="nav-item  ">
           <Link className="nav-Link text-dark active text-decoration-none mx-1" aria-current="page" to='Register'>Register</Link>
         </li>

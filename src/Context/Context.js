@@ -6,6 +6,8 @@ const Cart = createContext();
 export default function Context({children}) {
   const [items,setItems] = useState([]);
   const [categories,setCategories] = useState([]);
+  const [auth, setAuth] = useState({});
+  const [loggedIn,setLoggedIn] = useState(false);
   async function getItems(){
     let {data} = await Axios.get(`http://localhost:9999/api/items`);
 
@@ -29,7 +31,9 @@ export default function Context({children}) {
   
   return (
     <>
-      <Cart.Provider value={{state,dispatch,items,setItems,categories,setCategories}}>
+      <Cart.Provider value={
+        {state,dispatch,items,setItems,categories,setCategories,auth,setAuth,loggedIn,setLoggedIn}
+        }>
         {children}
       </Cart.Provider>
     </>
